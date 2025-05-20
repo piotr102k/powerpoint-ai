@@ -1,0 +1,10 @@
+.ipynb_checkpoints
+.venv
+*.jpg
+
+# Zdjecia
+images
+images2
+
+# Modele
+*.keras
