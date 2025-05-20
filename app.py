@@ -5,8 +5,7 @@ import ctypes
 from keras.models import load_model
 from keras.preprocessing import image
 
-# Load your single 3-class model
-model = load_model('prawus.keras')  # replace with your model path
+model = load_model('prawus.keras')
 VK_LEFT = 0x25
 VK_RIGHT = 0x27
 KEYEVENTF_KEYDOWN = 0
@@ -19,20 +18,18 @@ def press_key(hexKeyCode):
 
 
 def preprocess_image(frame, target_size=(320, 240)):
-    # Grayscale
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    # Resize to model input size (240x320)
     img = cv2.resize(img, target_size)
+
     img_array = img / 255.0
     img_array = np.expand_dims(img_array, axis=-1)
     img_array = np.expand_dims(img_array, axis=-0)
-    # Expand dims to (1, height, width, channels=1)
-   # add batch dim
+
     return img_array
 
 def predict_direction(img):
-    preds = model.predict(img)  # preds shape: (1, 3)
-    preds = preds[0]  # remove batch dim
+    preds = model.predict(img)
+    preds = preds[0]
     classes = ['left', 'right', 'no']
     predicted_class_idx = np.argmax(preds)
     confidence = preds[predicted_class_idx]
@@ -55,10 +52,9 @@ def main():
             input_img = preprocess_image(frame)
             direction, confidence = predict_direction(input_img)
 
-            # Optionally, only update direction if confidence > threshold
             if confidence < 0.7:
                 direction = "no"
-            # Press left arrow
+
             if direction=="left":
                 press_key(VK_LEFT)
             if direction=="right":
