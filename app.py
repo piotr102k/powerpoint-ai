@@ -1,11 +1,11 @@
+import os
 import cv2
 import numpy as np
 import time
 import ctypes
 from keras.models import load_model
-from keras.preprocessing import image
 
-model = load_model('prawus.keras')
+model = load_model(os.getcwd() + '/prawus.keras')
 VK_LEFT = 0x25
 VK_RIGHT = 0x27
 KEYEVENTF_KEYDOWN = 0
@@ -66,7 +66,7 @@ def main():
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         cv2.imshow("Direction Detection", frame)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(1) == 27 or cv2.getWindowProperty("Direction Detection", 4) < 1:
             break
 
     cap.release()

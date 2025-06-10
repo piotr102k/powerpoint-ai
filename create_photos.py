@@ -6,7 +6,7 @@ def main():
     cap = cv2.VideoCapture(0)
     direction="no"
     while True:
-        ret, frame = cap.read()
+        _, frame = cap.read()
         display_frame = cv2.flip(frame, 1)
         frame = cv2.resize(frame, (320,240))
         display_frame = cv2.resize(display_frame, (960,720))
@@ -30,6 +30,9 @@ def main():
             direction="no"
         if key == 100:
             direction="right"
+        
+        if cv2.waitKey(1) == 27 or cv2.getWindowProperty("Lmao", 4) < 1:
+            break
 
     cap.release()
     cv2.destroyAllWindows()
