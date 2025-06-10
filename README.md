@@ -4,7 +4,9 @@ Zestaw narzędzi do uczenia modelu sztucznej inteligencji wykrywającej gesty pr
 
 ![app.py](./doc/app.py.png)
 
-## app.py
+## Opis
+
+### app.py
 
 Gotowa aplikacja wykrywająca gesty prowadzącego prezentacje. Możliwe stany:
 
@@ -14,7 +16,7 @@ Gotowa aplikacja wykrywająca gesty prowadzącego prezentacje. Możliwe stany:
 
 Do poprawnego działania aplikacja potrzebuje modelu wyeksportowanego z `train.ipynb`
 
-## create_photos.py
+### create_photos.py
 
 Aplikacja wspomagająca tworzenie zdjęć służących jako dane do trenowania modelu. Sterowanie:
 
@@ -23,18 +25,18 @@ Aplikacja wspomagająca tworzenie zdjęć służących jako dane do trenowania m
 - `d` - przygotowanie do wykonywania zdjęć oznaczonych jako `right`
 - `enter` - wykonanie zdjęcia w miejscu uruchomienia programu
 
-## train.ipynb
+### train.ipynb
 
 Program trenujący model na danych zebranych z `create_photos.py`
 
-### Przygotowanie projektu
+## Przygotowanie projektu
 
 1. Wymagany zainstalowany `Python 3.12` lub starszy
 2. `python -m venv .venv`
 3. `.venv\Scripts\activate`
 4. `pip install -r requirements.txt`
 
-### Budowanie
+## Budowanie
 
 Aplikację do robienia zdjęć buduje się poleceniem `pyinstaller --onefile create_photos.py`
 
