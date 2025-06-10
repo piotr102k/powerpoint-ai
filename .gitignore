@@ -1,6 +1,9 @@
 .ipynb_checkpoints
 .venv
 *.jpg
+*.spec
+build
+dist
 
 # Zdjecia
 images
